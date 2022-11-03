@@ -29,13 +29,23 @@ function test( div ) {
 	type: 'scatter3d',
 	marker: {
 	    /* size: 20, */
-	    color: t_0.map((t) => myfrac( 2.8 * t) ),
+	    color: t_0.map((t) => myfrac( 1.2 * t) ),
 	    colorscale: HSV, 
-/*	    colorscale: 'Greens', */
 	},
     };
 
-    Plotly.newPlot(div, [trace1], {});
+    function update_color () {
+	trace1.marker.color = trace1.marker.color.map( t => myfrac(t + 0.1));
+	Plotly.animate(div, [trace1],
+		       {transition: {duration: 0},
+			frame: {duration: 0,
+			       },
+			
+		       });
+    }
+
+    Plotly.newPlot(div, [trace1], {})
+	.then( setInterval( update_color, 1000) ) /* 100にしたいが、それだとユーザがインタラクションできなくなる。アニメを止めるボタンをつけるべきかもしれない */
 }
 
 
