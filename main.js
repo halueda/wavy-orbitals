@@ -28,26 +28,26 @@ function test( div ) {
 	mode: 'markers',
 	type: 'scatter3d',
 	marker: {
-	    /* size: 20, */
 	    color: t_0.map((t) => myfrac( 1.2 * t) ),
 	    colorscale: HSV, 
 	},
     };
+    var lay1 = {transition: {duration: 0},
+		frame: {duration: 0,  },
+		datarevision: 0
+	       };
 
     function update_color () {
 	trace1.marker.color = trace1.marker.color.map( t => myfrac(t + 0.1));
-	Plotly.animate(div, [trace1],{}); /* ToDo animate のオプションで座標軸を書き換えるな的なものがあれば良いのだけど... */
-	/* requestAnimationFrame( function(){} );*/
+	lay1.datarevision += 1
+	Plotly.update(div,[trace1],lay1);
+	console.log(JSON.parse(JSON.stringify(lay1.scene.camera))) 
     }
 
-    Plotly.newPlot(div, [trace1],
- 		   {transition: {duration: 0},
-		    frame: {duration: 0,
-			    /*	redraw: false,*/
-			   },
-		    }
-		  )
-    .then( setInterval( update_color, 1000) ) /* ToDo 100にしたいが、それだとユーザが座標軸をいじれなくなる。アニメを止めるボタンをつけるべきかもしれない */
+    Plotly.newPlot(div, [trace1], lay1, {staticPlot: false})
+	.then( function(){Plotly.addFrames( div, [ {name: 'wave', data: trace1 }, ]  )} )
+	.then( setInterval( update_color, 1000) )  /* ToDo 100にしたいが、それだとユーザが座標軸をいじれなくなる。アニメを止めるボタンをつけるべきかもしれない */
+    
 }
 
 
