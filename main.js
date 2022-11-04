@@ -18,8 +18,12 @@ function myfrac( v ) {
     return( v - Math.floor(v) ) ;
 }
 
+function myrange( n ) {
+    return [...Array(100)].map((_, i) => i/100)
+}
+
 function test( div ) {
-    var t_0 = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]; /* ToDo 100ŒÂ‚­‚ç‚¢‚É‘‚â‚µ‚Ä‚Ý‚æ‚¤ */
+    var t_0 = myrange(100).map((_, i) => i/100) 
 
     var trace1 = {
 	x: t_0.map((t) =>  1.0 / 4 * Math.sin( 8 * Math.PI * t)), 
@@ -38,10 +42,10 @@ function test( div ) {
 	       };
 
     function update_color () {
-	trace1.marker.color = trace1.marker.color.map( t => myfrac(t + 0.1));
+	trace1.marker.color = trace1.marker.color.map( t => myfrac(t + 0.08));
 	lay1.datarevision += 1
 	Plotly.update(div,[trace1],lay1);
-	console.log(JSON.parse(JSON.stringify(lay1.scene.camera))) 
+	/* console.log(JSON.parse(JSON.stringify(lay1.scene.camera))) */
     }
 
     Plotly.newPlot(div, [trace1], lay1, {staticPlot: false})
