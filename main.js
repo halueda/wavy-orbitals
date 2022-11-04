@@ -36,16 +36,18 @@ function test( div ) {
 
     function update_color () {
 	trace1.marker.color = trace1.marker.color.map( t => myfrac(t + 0.1));
-	Plotly.animate(div, [trace1],
-		       {transition: {duration: 0},
-			frame: {duration: 0,
-			       },
-			
-		       });
+	Plotly.animate(div, [trace1],{}); /*animate のオプションで座標軸を書き換えるな的なものがあれば良いのだけど... */
+	/* requestAnimationFrame( function(){} );*/
     }
 
-    Plotly.newPlot(div, [trace1], {})
-	.then( setInterval( update_color, 1000) ) /* 100にしたいが、それだとユーザがインタラクションできなくなる。アニメを止めるボタンをつけるべきかもしれない */
+    Plotly.newPlot(div, [trace1],
+ 		   {transition: {duration: 0},
+		    frame: {duration: 0,
+			    /*	redraw: false,*/
+			   },
+		    }
+		  )
+    .then( setInterval( update_color, 1000) ) /* 100にしたいが、それだとユーザが座標軸をいじれなくなる。アニメを止めるボタンをつけるべきかもしれない */
 }
 
 
