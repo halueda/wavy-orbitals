@@ -1,8 +1,8 @@
 /* import Plotly from 'https://cdn.plot.ly/plotly-2.14.0.min.js'; */
 /* import {HSV} from 'cyclic_colorcale.js';*/
 
-const HSV=[
-      [ 0/9, "rgb(255, 0, 0)"],	
+const HSV=[ /* ToDo pythonは conginuous color だが、js は discreet colorの様子。10倍くらいに補完した方が良い */
+      [ 0/9, "rgb(255, 0, 0)"],	 /* ToDo 最初の小数部は、書かないと等間隔になったりしないのかな */ /* ToDo rgb とか文字列にしないで数値を与えられそうな気がする */
       [ 1/9, "rgb(255, 167, 0)"],	
       [ 2/9, "rgb(175, 255, 0)"],	
       [ 3/9, "rgb(8, 255, 0)"],	
@@ -19,7 +19,7 @@ function myfrac( v ) {
 }
 
 function test( div ) {
-    var t_0 = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
+    var t_0 = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]; /* ToDo 100個くらいに増やしてみよう */
 
     var trace1 = {
 	x: t_0.map((t) =>  1.0 / 4 * Math.sin( 8 * Math.PI * t)), 
@@ -36,7 +36,7 @@ function test( div ) {
 
     function update_color () {
 	trace1.marker.color = trace1.marker.color.map( t => myfrac(t + 0.1));
-	Plotly.animate(div, [trace1],{}); /*animate のオプションで座標軸を書き換えるな的なものがあれば良いのだけど... */
+	Plotly.animate(div, [trace1],{}); /* ToDo animate のオプションで座標軸を書き換えるな的なものがあれば良いのだけど... */
 	/* requestAnimationFrame( function(){} );*/
     }
 
@@ -47,7 +47,7 @@ function test( div ) {
 			   },
 		    }
 		  )
-    .then( setInterval( update_color, 1000) ) /* 100にしたいが、それだとユーザが座標軸をいじれなくなる。アニメを止めるボタンをつけるべきかもしれない */
+    .then( setInterval( update_color, 1000) ) /* ToDo 100にしたいが、それだとユーザが座標軸をいじれなくなる。アニメを止めるボタンをつけるべきかもしれない */
 }
 
 
