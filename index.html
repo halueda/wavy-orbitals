@@ -1,8 +1,7 @@
 <html>
 <head>
   <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
-  <script src="main.js" ></script>
-  <!--script src="main.js" type="module" ></script-->
+  <!--script src="main.js" ></script-->
 </head>
 <Body>
 <H1>
@@ -11,7 +10,10 @@ Wavy Orbitals
 
 
   <div id="myDiv"><!-- ここにグラフを表示する --></div>
-  <script> test('myDiv'); </script>
+  <script type="module">
+    import test from "./main.js";
+    test('myDiv');
+  </script>
 
 
 

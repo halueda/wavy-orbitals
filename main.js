@@ -1,18 +1,5 @@
 /* import Plotly from 'https://cdn.plot.ly/plotly-2.14.0.min.js'; */
-/* import {HSV} from 'cyclic_colorcale.js';*/
-
-const HSV=[ /* ToDo pythonは conginuous color だが、js は discreet colorの様子。10倍くらいに補完した方が良い */
-      [ 0/9, "rgb(255, 0, 0)"],	 /* ToDo 最初の小数部は、書かないと等間隔になったりしないのかな */ /* ToDo rgb とか文字列にしないで数値を与えられそうな気がする */
-      [ 1/9, "rgb(255, 167, 0)"],	
-      [ 2/9, "rgb(175, 255, 0)"],	
-      [ 3/9, "rgb(8, 255, 0)"],	
-      [ 4/9, "rgb(0, 255, 159)"],	
-      [ 5/9, "rgb(0, 183, 255)"],	
-      [ 6/9, "rgb(0, 16, 255)"],	
-      [ 7/9, "rgb(151, 0, 255)"],	
-      [ 8/9, "rgb(255, 0, 191)"],	
-      [ 9/9, "rgb(255, 0, 0)"],
-];
+import {HSV} from './cyclic_colorscale.js';
 
 function myfrac( v ) {
     return( v - Math.floor(v) ) ;
@@ -22,7 +9,7 @@ function myrange( n ) {
     return [...Array(100)].map((_, i) => i/100)
 }
 
-function test( div ) {
+export default function test( div ) {
     var t_0 = myrange(100).map((_, i) => i/100) 
 
     var trace1 = {
@@ -53,9 +40,5 @@ function test( div ) {
 	.then( setInterval( update_color, 1000) )  /* ToDo 100にしたいが、それだとユーザが座標軸をいじれなくなる。アニメを止めるボタンをつけるべきかもしれない */
     
 }
-
-
-
-
 
 
