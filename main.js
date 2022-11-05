@@ -48,6 +48,7 @@ export default function test( div, noanime ) {
 
     var lay1 = {transition: {duration: 0},
 		frame: {duration: 0,  },
+		scene: { camera: { projection: {type: "orthographic" },},},
 		datarevision: 0
 	       };
 
