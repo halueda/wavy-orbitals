@@ -8,13 +8,14 @@
 Wavy Orbitals
 </H1>
 
-
+  <foam>
+    <input type="checkbox" id="noanimation"> Stop Animation</input>
+  </foam>
   <div id="myDiv"><!-- ここにグラフを表示する --></div>
   <script type="module">
     import test from "./main.js";
-    test('myDiv');
+    test('myDiv', 'noanimation');
   </script>
-
 
 
 </Body>

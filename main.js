@@ -6,10 +6,10 @@ function myfrac( v ) {
 }
 
 function myrange( n ) {
-    return [...Array(100)].map((_, i) => i/100)
+    return [...Array(100)].map((_, i) => i)
 }
 
-export default function test( div ) {
+export default function test( div, noanime ) {
     var t_0 = myrange(100).map((_, i) => i/100) 
 
     var trace1 = {
@@ -29,15 +29,19 @@ export default function test( div ) {
 	       };
 
     function update_color () {
-	trace1.marker.color = trace1.marker.color.map( t => myfrac(t + 0.08));
-	lay1.datarevision += 1
-	Plotly.update(div,[trace1],lay1);
+	var noanime_p = document.getElementById(noanime).checked
+	console.log(JSON.parse(JSON.stringify({noanime, noanime_p})))
+	if ( ! noanime_p ) {
+	    trace1.marker.color = trace1.marker.color.map( t => myfrac(t + 0.08));
+	    lay1.datarevision += 1
+	    Plotly.update(div,[trace1],lay1);
+	}
 	/* console.log(JSON.parse(JSON.stringify(lay1.scene.camera))) */
     }
 
     Plotly.newPlot(div, [trace1], lay1, {staticPlot: false})
 	.then( function(){Plotly.addFrames( div, [ {name: 'wave', data: trace1 }, ]  )} )
-	.then( setInterval( update_color, 1000) )  /* ToDo 100にしたいが、それだとユーザが座標軸をいじれなくなる。アニメを止めるボタンをつけるべきかもしれない */
+	.then( setInterval( update_color, 1000) )  /* 譛ｬ逡ｪ縺ｧ縺ｯ 100縺ｫ縺吶ｋ縲Ｑlotly.js縺ｮ讀懆ｨｼ縺ｮ縺溘ａ縺ｫ1000縺ｫ縺励※縺翫￥ */
     
 }
 
