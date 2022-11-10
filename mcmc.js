@@ -22,20 +22,21 @@ const BURN_IN_PERIOD = 50
 //   }
 // })
 // export default class App extends Vue {
-//   /** サンプリングの初期値 x軸の値 */
-   private x0 = 3.0
-//   /** サンプリングの初期値 y軸の値 */
-   private y0 = 3.0
-//   /** 生成したサンプル数 (Burn-in 期間や棄却されたものを含む) */
-   private count = 0
-//   /** 生成したサンプル列 (Burn-in 期間や棄却されたものを含む) */
-   private samples: Sample[] = []
-//   // ======================================================================== //
-//   /** 目標分布のカーネル */
+export default class App {
+  /** サンプリングの初期値 x軸の値 */
+  private x0 = 3.0
+  /** サンプリングの初期値 y軸の値 */
+  private y0 = 3.0
+  /** 生成したサンプル数 (Burn-in 期間や棄却されたものを含む) */
+  private count = 0
+  /** 生成したサンプル列 (Burn-in 期間や棄却されたものを含む) */
+  private samples: Sample[] = []
+  // ======================================================================== //
+  /** 目標分布のカーネル */
    p ({ x, y }: Point): number {
      return Math.exp(-0.5 * (x * x - 2 * b * x * y + y * y))
    }
-//   /** 提案分布 - 正規分布からの実現値の組 */
+  /** 提案分布 - 正規分布からの実現値の組 */
    q ({ x, y }: Point): Point {
      return {
        x: x + rnorm(0, SIGMA),
@@ -53,14 +54,14 @@ const BURN_IN_PERIOD = 50
     // r が 1 以上ならそのまま受容する (accepted === true になる)
     // r が 1 より小さいなら、確率 r で受容する
     const accepted = r >= 1 || r > uniform(0, 1)
-    console.table({
-      current: `(${current.x.toFixed(2)}, ${current.y.toFixed(2)})`,
-      next: `(${next.x.toFixed(2)}, ${next.y.toFixed(2)})`,
-      pCurrent: pCurrent.toFixed(2),
-      pNext: pNext.toFixed(2),
-      r: r.toFixed(2),
-      result: accepted ? 'accepted' : 'rejected'
-    })
+//     console.table({
+//       current: `(${current.x.toFixed(2)}, ${current.y.toFixed(2)})`,
+//       next: `(${next.x.toFixed(2)}, ${next.y.toFixed(2)})`,
+//       pCurrent: pCurrent.toFixed(2),
+//       pNext: pNext.toFixed(2),
+//       r: r.toFixed(2),
+//       result: accepted ? 'accepted' : 'rejected'
+//     })
     return {
       count: this.count,
       burnin: this.count < BURN_IN_PERIOD,
