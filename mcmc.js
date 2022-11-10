@@ -22,7 +22,7 @@ const BURN_IN_PERIOD = 50
 //   }
 // })
 // export default class App extends Vue {
-export default class App {
+export default class MCMCSampler {
   /** サンプリングの初期値 x軸の値 */
   private x0 = 3.0
   /** サンプリングの初期値 y軸の値 */
