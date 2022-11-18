@@ -1,3 +1,4 @@
+// coding: utf-8-unix; 日本語あり
 /* import Plotly from 'https://cdn.plot.ly/plotly-2.14.0.min.js'; */
 import {HSV} from './cyclicColorscale.js';
 import WaveFragment from './waveFragment.js';

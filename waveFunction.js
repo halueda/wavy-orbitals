@@ -1,34 +1,34 @@
 
 export default class WaveFunction {
-    /* ‚±‚ê‚Íˆê”Ô’ŠÛ“I‚ÈƒNƒ‰ƒXBƒ†[ƒeƒBƒŠƒeƒBŠÖ”‚ğŠÜ‚Ş */
-    /* ˆø”‚Ì point ‚Í {x: num, y: num, z: num} Œ`®BˆÚ“®‚Ìƒ‰ƒCƒuƒ‰ƒŠ‚ğg‚¢‚½‚¢‚©‚ç */
-    /* Œ‹‰Ê‚Ì•¡‘f”‚Í */
+    /* ã“ã‚Œã¯ä¸€ç•ªæŠ½è±¡çš„ãªã‚¯ãƒ©ã‚¹ã€‚ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£é–¢æ•°ã‚’å«ã‚€ */
+    /* å¼•æ•°ã® point ã¯ {x: num, y: num, z: num} å½¢å¼ã€‚ç§»å‹•ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½¿ã„ãŸã„ã‹ã‚‰ */
+    /* çµæœã®è¤‡ç´ æ•°ã¯ */
     sampling (n, seed=null) {
-	/* nŒÂ‚Ì WaveFragment ‚ğæ‚èo‚· */
-	/* seed ‚ª null ‚Å‚È‚¯‚ê‚Î—”‚ğ‰Šú‰» */
-	/* from ‚©‚ç‚Ì‘½ŸŒ³³‹K•ª•z‚Å to‚ğì‚é */
-	/* if this.probability(to)/this.probability(from) > rand() ‚È‚çÌ—p‚µ‚Ä from ‚ğ•ÏX */
-	/*   if ƒo[ƒ“ƒCƒ“’†‚Å‚È‚¯‚ê‚Î */
-	/*      Ì—p‚µ‚½‚à‚Ì‚Í new WaveFragment( from.x, from.y, from.z, this.theta(), this.angular_velocity(), this) ‚µ‚ÄŒ‹‰Ê‚É“ü‚ê‚é */
-	/*      Ì—pƒJƒEƒ“ƒ^ ++ ‚Å\•ª‚È‚çreturn */
-	/* ƒo[ƒ“ƒCƒ“ƒJƒEƒ“ƒ^ ++ */
+	/* nå€‹ã® WaveFragment ã‚’å–ã‚Šå‡ºã™ */
+	/* seed ãŒ null ã§ãªã‘ã‚Œã°ä¹±æ•°ã‚’åˆæœŸåŒ– */
+	/* from ã‹ã‚‰ã®å¤šæ¬¡å…ƒæ­£è¦åˆ†å¸ƒã§ toã‚’ä½œã‚‹ */
+	/* if this.probability(to)/this.probability(from) > rand() ãªã‚‰æ¡ç”¨ã—ã¦ from ã‚’å¤‰æ›´ */
+	/*   if ãƒãƒ¼ãƒ³ã‚¤ãƒ³ä¸­ã§ãªã‘ã‚Œã° */
+	/*      æ¡ç”¨ã—ãŸã‚‚ã®ã¯ new WaveFragment( from.x, from.y, from.z, this.theta(), this.angular_velocity(), this) ã—ã¦çµæœã«å…¥ã‚Œã‚‹ */
+	/*      æ¡ç”¨ã‚«ã‚¦ãƒ³ã‚¿ ++ ã§ååˆ†ãªã‚‰return */
+	/* ãƒãƒ¼ãƒ³ã‚¤ãƒ³ã‚«ã‚¦ãƒ³ã‚¿ ++ */
     }
     probability ( point_or_wavevalue ) {
-	/* this.waveValue ‚ğ æ‚èo‚µ */
-	/* 2æ‚µ‚ÄŠm—§‚É‚µ‚Ä return */
+	/* this.waveValue ã‚’ å–ã‚Šå‡ºã— */
+	/* 2ä¹—ã—ã¦ç¢ºç«‹ã«ã—ã¦ return */
     }
     theta( point_or_wavevalue ) {
-	/* this.waveValue ‚ğ æ‚èo‚µ */
-	/* atan() ‚Å theta‚ğ‹‚ß‚Ä return */
+	/* this.waveValue ã‚’ å–ã‚Šå‡ºã— */
+	/* atan() ã§ thetaã‚’æ±‚ã‚ã¦ return */
     }
     angular_velocity( point_or_wavevalue ) {
-	/* this.energy ‚ğ æ‚èo‚µ */
-	/* ‚²‚É‚å‚²‚É‚åŒvZ‚µ‚Ä return */
+	/* this.energy ã‚’ å–ã‚Šå‡ºã— */
+	/* ã”ã«ã‚‡ã”ã«ã‚‡è¨ˆç®—ã—ã¦ return */
     }
     energy( ) {
-	error("need to À‘•");
+	error("need to å®Ÿè£…");
     }
     waveValue( point ) {
-	error("need to À‘•");
+	error("need to å®Ÿè£…");
     }
 }
