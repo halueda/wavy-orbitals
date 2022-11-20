@@ -15,7 +15,7 @@ function myrange( n ) {
     return [...Array(100)].map((_, i) => i)
 }
 
-function sampling_wave_fragment(n) {
+function sampling_test_wave_fragment(n) {
     var t_0 = myrange(n).map((_, i) => i/n) 
     return t_0.
 	map( t => new
@@ -30,7 +30,11 @@ function sampling_wave_fragment(n) {
 }
 
 function test( div, noanime ) {
-    var sampled_wave_fragments = sampling_wave_fragment(100);
+    var sampled_wave_fragments = sampling_test_wave_fragment(100);
+    animateWaveFragments( div, noanime, sampled_wave_fragments );
+}
+
+function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
     var visible_wave_fragments = sampled_wave_fragments.filter( t=> t.visible )
 
     var trace1 = {
