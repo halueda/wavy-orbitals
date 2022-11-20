@@ -34,7 +34,7 @@ function rnorm (m = 0, s = 1) {
  * @param min
  * @param max
  */
-function uniform (min: number, max: number) {
+function uniform (min, max) {
   return Math.random() * (max - min) + min
 }
 
@@ -43,7 +43,7 @@ function uniform (min: number, max: number) {
 
 // export default class App extends Vue {
 export default class MCMCSampler {
-    private count = 0
+    count = 0
     // ======================================================================== //
 //    /** 目標分布のカーネル */
 //	/** 目標分布(二変量正規分布)の共分散 */
@@ -95,8 +95,8 @@ export default class MCMCSampler {
     }
 
     /** サンプル取得して更新 */
-    sample1 (): {
-	a_sample = sample0();
+    sample1 () {
+	     a_sample = sample0();
 	// 取得した sample が受容されていた場合は、次に備えて点 current を点 next で置き換える
 	if (a_sample.result) {
 	    this.current = sample.next 
@@ -113,7 +113,7 @@ export default class MCMCSampler {
     }
 
     /** acceptされたサンプルを返す */
-    sample (): {
+    sample () {
 	a_sample = sample1();
 	while ( a_sample == false) {
 	    a_sample = sample1();

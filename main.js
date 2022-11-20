@@ -29,7 +29,7 @@ function sampling_wave_fragment(n) {
 		 true));
 }
 
-export default function test( div, noanime ) {
+function test( div, noanime ) {
     var sampled_wave_fragments = sampling_wave_fragment(100);
     var visible_wave_fragments = sampled_wave_fragments.filter( t=> t.visible )
 
@@ -76,3 +76,8 @@ export default function test( div, noanime ) {
 }
 
 
+const WavyOrbitals = {
+  experiment : test,
+};
+
+export default WavyOrbitals;
