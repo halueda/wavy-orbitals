@@ -1,5 +1,7 @@
 import WaveFragment from './waveFragment.js';
 import MCMCSampler from './mcmcSampler.js';
+import math from 'https://cdnjs.com/libraries/mathjs';
+
 
 export default class WaveFunction {
   /* これは一番抽象的なクラス。ユーティリティ関数を含む */
@@ -26,10 +28,15 @@ export default class WaveFunction {
   probability(point_or_wavevalue) {
     /* this.waveValue を 取り出し */
     /* 2乗して確率にして return */
+    wave_value = this.waveValue(point_or_wavevalue);
+    return wave_value.toPolar().r;
   }
   theta(point_or_wavevalue) {
     /* this.waveValue を 取り出し */
     /* atan() で thetaを求めて return */
+    
+    wave_value = this.waveValue(point_or_wavevalue);
+    return wave_value.toPolar().phi;
   }
   angular_velocity(point_or_wavevalue) {
     /* this.energy を 取り出し */
@@ -39,6 +46,7 @@ export default class WaveFunction {
     error("need to 実装");
   }
   waveValue(point) /*: { re: number, im: number } */ {
-    error("need to 実装");
+    return math.complex(2, 3);
+    //error("need to 実装");
   }
 }
