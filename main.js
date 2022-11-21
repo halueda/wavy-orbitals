@@ -79,9 +79,14 @@ function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
     
 }
 
+function forDebug(){
+  
+  //
+} 
 
 const WavyOrbitals = {
   experiment : test,
+  debug : forDebug,
 };
 
 export default WavyOrbitals;
