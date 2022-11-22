@@ -2,6 +2,7 @@
 /* import Plotly from 'https://cdn.plot.ly/plotly-2.14.0.min.js'; */
 import {HSV} from './cyclicColorscale.js';
 import WaveFragment from './waveFragment.js';
+import WaveFunction from './waveFunction.js';
 
 const cmin = 0;
 const cmax = 1; /*  = 2 * Math.PI */
@@ -79,9 +80,19 @@ function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
     
 }
 
+
 function forDebug(){
+  const unchanged = {v:"unchanged",};
+  var result = unchanged;
   
-  //
+  
+  result = (new WaveFunction).waveValue(1);
+  
+  
+  if (result !== unchanged) {
+    console.log(JSON.parse(JSON.stringify(result))) ;
+    console.log(result.toString);
+  }
 } 
 
 const WavyOrbitals = {

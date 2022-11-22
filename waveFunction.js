@@ -1,7 +1,14 @@
 import WaveFragment from './waveFragment.js';
 import MCMCSampler from './mcmcSampler.js';
-import math from 'https://cdnjs.com/libraries/mathjs';
+//import { complex } from 'https://cdnjs.com/libraries/mathjs';
+//import { complex } from 'https://unpkg.com/mathjs@10.1.1/lib/browser/math.js';
+//import * as math from 'https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.5.1/math.min.js';
+//const math = create(all,  {})
+//import * as mathjs from 'https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.5.1/math.min.js';
 
+// Use await import to load the package:
+//const mathjs = await import("https://unpkg.com/mathjs@10.1.1/lib/browser/math.js");
+import * as mathjs from 'https://cdn.skypack.dev/mathjs';
 
 export default class WaveFunction {
   /* これは一番抽象的なクラス。ユーティリティ関数を含む */
@@ -46,7 +53,7 @@ export default class WaveFunction {
     error("need to 実装");
   }
   waveValue(point) /*: { re: number, im: number } */ {
-    return math.complex(2, 3);
+    return mathjs.complex(2,3);
     //error("need to 実装");
   }
 }
