@@ -68,19 +68,19 @@ export default class MCMCSampler {
 	/** 提案分布の標準偏差 */
 	sigma=1.0,
     ){
-	this.p = p;
+	this.p = p; 
 	this.current = {x: x0, y: y0, z: z0};
 	this.BURN_IN_PERIOD = burn_in_period;
 	this.SIGMA = sigma;
-	burnIn();
+	//this.burnIn();
     }
 
     /** サンプル取得処理 */
     sample0 () {
 	// 点 current 、初回は current === undefined なので { x0, y0 } を使う
 	// const current = this.current || { x: this.x0, y: this.y0 }
-	const next = this.q(current)      // 提案分布を使って点 next を選ぶ
-	const pCurrent = this.p(current)  // 点 current における目標分布の確率密度
+	const next = this.q(this.current)      // 提案分布を使って点 next を選ぶ
+	const pCurrent = this.p(this.current)  // 点 current における目標分布の確率密度
 	const pNext = this.p(next)        // 点 next における目標分布の確率密度
 	const r = pNext / pCurrent        // 受容確率
 	// r が 1 以上ならそのまま受容する (accepted === true になる)
@@ -88,19 +88,19 @@ export default class MCMCSampler {
 	const accepted = r >= 1 || r > uniform(0, 1)
 	this.count +=1;
 	return {
-	    current,
-	    next,
+	    currenr: this.current,
+	    next: next,
 	    result: accepted,
 	}
     }
 
     /** サンプル取得して更新 */
     sample1 () {
-	     a_sample = sample0();
+	     a_sample = this.sample0();
 	// 取得した sample が受容されていた場合は、次に備えて点 current を点 next で置き換える
 	if (a_sample.result) {
-	    this.current = sample.next 
-	    return sample.next;
+	    this.current = a_sample.next 
+	    return a_sample.next;
 	} else {
 	    return false;
 	}
@@ -108,16 +108,25 @@ export default class MCMCSampler {
 
     burnIn() {
 	while (this.count < this.BURN_IN_PERIOD) {
-	    sample1();
+	    this.sample1();
 	}
     }
 
     /** acceptされたサンプルを返す */
-    sample () {
-	a_sample = sample1();
+    sample2 () {
+	a_sample = this.sample1();
 	while ( a_sample == false) {
-	    a_sample = sample1();
+	    a_sample = this.sample1();
 	}
 	return a_sample;
+    }
+    
+    sample(n){
+        this.burnIn();
+        const arr = new Array(n);
+        for (let i = 0; i < arr.length; ++i) {
+            arr[i]= this.sample2()
+        }
+        return arr;
     }
 }

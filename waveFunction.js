@@ -15,14 +15,17 @@ export default class WaveFunction {
   /* 引数の point は {x: num, y: num, z: num} 形式。移動のライブラリを使いたいから */
   /* 結果の複素数は */
   init() {
-    this.sampler = MCMCSampler(this.probability);
+    this.sampler = new MCMCSampler(this.probability);
   }
-
+  constructor () {
+     //super();
+     this.init();
+  }
   sampling(n, seed = null) {
     /* n個の WaveFragment を取り出す */
     /* seed が null でなければ乱数を初期化 */
     // Math.rand(seed);
-    samples = this.sampler.sample(1000);
+    samples = this.sampler.sample(n);
     waveFragments = samples.map(t => new WaveFragment(
       t.x, t.y, t.z,
       this.theta(t),
@@ -48,6 +51,7 @@ export default class WaveFunction {
   angular_velocity(point_or_wavevalue) {
     /* this.energy を 取り出し */
     /* ごにょごにょ計算して return */
+    return 0.08;
   }
   energy(point) {
     error("need to 実装");

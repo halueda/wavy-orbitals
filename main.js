@@ -3,6 +3,8 @@
 import {HSV} from './cyclicColorscale.js';
 import WaveFragment from './waveFragment.js';
 import WaveFunction from './waveFunction.js';
+import testOrbital from './testOrbital.js';
+
 
 const cmin = 0;
 const cmax = 1; /*  = 2 * Math.PI */
@@ -35,6 +37,7 @@ function test( div, noanime ) {
     animateWaveFragments( div, noanime, sampled_wave_fragments );
 }
 
+//ここから下はview用のクラスにくくりだす
 function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
     var visible_wave_fragments = sampled_wave_fragments.filter( t=> t.visible )
 
@@ -64,6 +67,7 @@ function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
 	var noanime_p = document.getElementById(noanime).checked
 	/* console.log(JSON.parse(JSON.stringify({noanime, noanime_p}))) */
 	if ( ! noanime_p ) {
+	        //ここでアップデートチェックと、visible更新
 	    var diff_time = Date.now() - start_time;
 	    var cs = visible_wave_fragments.map(t => myfrac(t.init_theta + (t.angular_velocity * diff_time / 1000)) );
 	    trace1.marker.color = cs;
@@ -86,7 +90,7 @@ function forDebug(){
   var result = unchanged;
   
   
-  result = (new WaveFunction).waveValue(1);
+  result = (new testOrbital()). sampling(3);
   
   
   if (result !== unchanged) {
