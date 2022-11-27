@@ -89,8 +89,9 @@ function forDebug(){
   const unchanged = {v:"unchanged",};
   var result = unchanged;
   
-  
-  result = (new testOrbital()). sampling(3);
+  var tmp = (new testOrbital());
+  ll("in forDebug", tmp.waveValue);
+  result =  tmp.sampling(3);
   
   
   if (result !== unchanged) {
@@ -105,3 +106,8 @@ const WavyOrbitals = {
 };
 
 export default WavyOrbitals;
+function ll(mes, result){
+    console.log(mes);        
+    console.log(result.toString());
+}
+

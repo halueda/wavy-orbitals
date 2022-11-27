@@ -96,7 +96,7 @@ export default class MCMCSampler {
 
     /** サンプル取得して更新 */
     sample1 () {
-	     a_sample = this.sample0();
+	 let    a_sample = this.sample0();
 	// 取得した sample が受容されていた場合は、次に備えて点 current を点 next で置き換える
 	if (a_sample.result) {
 	    this.current = a_sample.next 
@@ -114,7 +114,7 @@ export default class MCMCSampler {
 
     /** acceptされたサンプルを返す */
     sample2 () {
-	a_sample = this.sample1();
+	let a_sample = this.sample1();
 	while ( a_sample == false) {
 	    a_sample = this.sample1();
 	}

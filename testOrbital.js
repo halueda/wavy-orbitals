@@ -1,5 +1,5 @@
 //import MCMCSampler from './mcmcSampler.js';
-//import * as mathjs from 'https://cdn.skypack.dev/mathjs';
+import * as mathjs from 'https://cdn.skypack.dev/mathjs';
 import WaveFunction from './waveFunction.js';
 
 export default class TestOrbital extends WaveFunction {
@@ -13,8 +13,8 @@ export default class TestOrbital extends WaveFunction {
     error("need to 実装");
   }
   waveValue(point) /*: { re: number, im: number } */ {
-    r2 = point.x*poin.x + point.y*point.y + point.z*point.z;
-    p = mathjs.exp( -r2 - 1);
+    let r2 = point.x*point.x + point.y*point.y + point.z*point.z;
+    let p = mathjs.exp( -r2 - 1);
     return mathjs.complex({r:p,phi:p});
     //error("need to 実装");
   }
