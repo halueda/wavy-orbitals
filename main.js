@@ -97,6 +97,7 @@ function forDebug( div, noanime  ){
   
   const tmp = (new testOrbital());
   result =  tmp.sampling(1000);
+  result.map( t => {if (t.x > 0 && t.y > 0) { t.visible = false; }; } );
   animateWaveFragments( div, noanime, result );
   
   
