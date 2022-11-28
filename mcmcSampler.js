@@ -88,7 +88,7 @@ export default class MCMCSampler {
 
   /** acceptされたサンプルを返す */
   sample2 () {
-    const a_sample = this.sample1();
+    let a_sample = this.sample1();
     while ( a_sample == false) {
       a_sample = this.sample1();
     }

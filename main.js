@@ -8,7 +8,8 @@ import { ll } from './util.js';
 
 
 const cmin = 0;
-const cmax = 1; /*  = 2 * Math.PI */
+//const cmax = 1;
+const cmax = 2 * Math.PI;
 
 function myfrac( v ) {
   /* return( v - Math.floor(v) ) ; */
@@ -27,7 +28,7 @@ function sampling_test_wave_fragment(n) {
 	   1.0 / 4 * Math.sin( 8 * Math.PI * t),
 	   1.0 / 4 * Math.cos( 8 * Math.PI * t),
 	   t,
-	   myfrac( 1.2 * t),
+	   myfrac( 3.6 * t),
 	   0.08,
 	   null,
 	   true));
@@ -38,8 +39,12 @@ function test( div, noanime ) {
   animateWaveFragments( div, noanime, sampled_wave_fragments );
 }
 
+
 //ここから下はview用のクラスにくくりだす
+// view 用のクラスは、visibilityを定義できる。例えば断面を見せるとか。ステージ用のクラスをそろそろ作らないといけない。
 function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
+  // t.visible でフィルターするのではなくて、t.visible() で判断するようにすべき
+  // ステージのフィルタリング条件を考慮すべき
   const visible_wave_fragments = sampled_wave_fragments.filter( t=> t.visible )
 
   const trace1 = {
@@ -51,8 +56,8 @@ function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
     marker: {
       color: visible_wave_fragments.map(t => t.init_theta),
       colorscale: HSV,
-      /*	    cmax: cmax,
-		    cmin: cmin, */
+      cmax: cmax,
+      cmin: cmin,
     },
   };
 
@@ -70,7 +75,7 @@ function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
     if ( ! noanime_p ) {
       //ここでアップデートチェックと、visible更新
       const diff_time = Date.now() - start_time;
-      const cs = visible_wave_fragments.map(t => myfrac(t.init_theta + (t.angular_velocity * diff_time / 1000)) );
+      const cs = visible_wave_fragments.map(t => myfrac(t.init_theta + (t.angular_velocity * diff_time / 200)) );
       trace1.marker.color = cs;
       /* lay1.datarevision += 1 */
       /* console.log(JSON.parse(JSON.stringify({diff_time, trace1}))) */
@@ -86,18 +91,17 @@ function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
 }
 
 
-function forDebug(){
+function forDebug( div, noanime  ){
   const unchanged = {v:"unchanged",};
   let result = unchanged;
   
   const tmp = (new testOrbital());
-  ll("in forDebug", tmp.waveValue);
-  result =  tmp.sampling(3);
+  result =  tmp.sampling(1000);
+  animateWaveFragments( div, noanime, result );
   
   
   if (result !== unchanged) {
-    console.log(JSON.parse(JSON.stringify(result))) ;
-    console.log(result.toString);
+    ll("forDebug result", result);
   }
 } 
 

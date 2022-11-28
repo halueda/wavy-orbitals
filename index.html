@@ -12,12 +12,13 @@ Wavy Orbitals
     <input type="checkbox" id="noanimation"> Stop Animation</input>
   </foam>
   <div id="myDiv"><!-- ここにグラフを表示する --></div>
+  <div id="forDebug"><!-- forDebug --></div>
   <script type="module">
     import WavyOrbitals from "./main.js";
     //import "./main.js"; 
     WavyOrbitals.experiment('myDiv', 'noanimation');
     
-    WavyOrbitals.debug();
+    WavyOrbitals.debug('forDebug', 'noanimation');
   </script>
 
 

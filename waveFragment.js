@@ -9,5 +9,9 @@ export default class WaveFragment {
     this.parent = parent;
     this.visible = visible;
   }
-  
+  visible() {
+    return this.visible;
+    // 本当は、this.parent.visible() とか
+    // ステージのフィルタリング条件を考慮すべき
+  }
 }
