@@ -4,7 +4,7 @@ import {HSV} from './cyclicColorscale.js';
 import WaveFragment from './waveFragment.js';
 import WaveFunction from './waveFunction.js';
 import testOrbital from './testOrbital.js';
-import ll from './util.js';
+import { ll } from './util.js';
 
 
 const cmin = 0;
