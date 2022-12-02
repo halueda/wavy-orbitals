@@ -30,9 +30,11 @@ https://halueda.github.io/wavy-orbitals/
 # Reference
 
 - [位相で見る波動関数](http://v.rentalserver.jp/morigon.jp/Repository/SUBI0/iso.html)
+  - このサイトにインスパイアされてこのリポジトリを作ることにしました。
 - [量子力学の波動関数 - 量子論の不思議な世界](https://xseek-qm.net/atom.html)
-- [波動関数の不思議 - 量子論の不思議な世界](https://xseek-qm.net/wave.html)
+  - [波動関数の不思議 - 量子論の不思議な世界](https://xseek-qm.net/wave.html)
     - [JavaScript animation of the atom wave function](https://xseek-qm.net/atom/atom.htm)
+  - このサイトにインスパイアされてこのリポジトリを作ることにしました。
 - [日曜化学(3)：分子軌道法と可視化（Python/matplotlib） - tsujimotterのノートブック](https://tsujimotter.hatenablog.com/entry/molecular-orbital-visualization)
     - [日曜化学(2.5)：メトロポリス・ヘイスティングス法を用いた電子雲の可視化（Python/matplotlib） - tsujimotterのノートブック](https://tsujimotter.hatenablog.com/entry/metropolis-hastings-algorithm)
         - MCMCサンプリング実装の参考にさせていただきました。
