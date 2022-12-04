@@ -45,11 +45,11 @@ export default class WaveFunction {
     return wave_value.toPolar().phi;
   }
   angular_velocity(point_or_wavevalue) {
-    /* this.energy を 取り出し */
-    /* ごにょごにょ計算して return */
-    return 0.08;
+    /* 原子単位系では this.energy と同じ値 */
+    return this.energy(point_or_wavevalue);
   }
   energy(point) {
+    return 0.08;  
     error("need to 実装");
   }
   waveValue(point) /*: { re: number, im: number } */ {
