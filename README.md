@@ -39,6 +39,6 @@ https://halueda.github.io/wavy-orbitals/
     - [日曜化学(2.5)：メトロポリス・ヘイスティングス法を用いた電子雲の可視化（Python/matplotlib） - tsujimotterのノートブック](https://tsujimotter.hatenablog.com/entry/metropolis-hastings-algorithm)
         - MCMCサンプリング実装の参考にさせていただきました。
 - [HTML5による物理シミュレーション環境の構築水素原子の波動関数ビューア](https://www.natural-science.or.jp/article/20120406225432.php)
-    - legandre 陪関数の実装を使わせていただきました
+    - legandre 陪関数の実装を使わせていただきました（MITライセンス）
 - [【Plotly】水素原子の図鑑：電子波動関数の可視化](https://zenn.dev/shittoku_xxx/articles/dc13eb4c060a1c)
     - legandre 陪関数の実装の正しさを確認するのに参照いたしました
