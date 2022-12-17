@@ -1,7 +1,7 @@
 import WaveFragment from './waveFragment.js';
 import MCMCSampler from './mcmcSampler.js';
 import * as mathjs from 'https://cdn.skypack.dev/mathjs';
-import { ll } from './util.js';
+import {ll} from './util.js';
 
 export default class WaveFunction {
   /* これは一番抽象的なクラス。ユーティリティ関数を含む */
