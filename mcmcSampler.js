@@ -37,7 +37,7 @@ export default class MCMCSampler {
   constructor(
     /** 目標分布のカーネル */
     p,
-    x0=0, y0=0, z0=0,
+    x0=1, y0=1, z0=1,
     /** Burn-in 期間の長さ */
     burn_in_period=50,
     /** 提案分布の標準偏差 */
