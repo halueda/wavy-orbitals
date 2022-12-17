@@ -3,7 +3,8 @@
 import {HSV} from './cyclicColorscale.js';
 import WaveFragment from './waveFragment.js';
 import WaveFunction from './waveFunction.js';
-import testOrbital from './testOrbital.js';
+//import testOrbital from './testOrbital.js';
+import Hydrogen from './hydrogen.js';
 import { ll } from './util.js';
 
 
@@ -56,6 +57,8 @@ function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
     marker: {
       color: visible_wave_fragments.map(t => t.init_theta),
       colorscale: HSV,
+      size: 3,
+      opacity: 0.5,
       cmax: cmax,
       cmin: cmin,
     },
@@ -95,7 +98,7 @@ function forDebug( div, noanime  ){
   const unchanged = {v:"unchanged",};
   let result = unchanged;
   
-  const tmp = (new testOrbital());
+  const tmp = (new Hydrogen (2,1,0));
   result =  tmp.sampling(1000);
   result.map( t => {if (t.x > 0 && t.y > 0) { t.visible = false; }; } );
   animateWaveFragments( div, noanime, result );

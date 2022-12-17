@@ -13,7 +13,7 @@ export default class TestOrbital extends WaveFunction {
     error("need to 実装");
   }
   waveValue(point) /*: { re: number, im: number } */ {
-    const r2 = point.x*point.x + point.y*point.y + point.z*point.z;
+    const r2 = point.x*point.x + 2*point.y*point.y + 4*point.z*point.z;
     const p = mathjs.exp( -r2 - 1);
     return mathjs.complex({r:p,phi:p});
   }

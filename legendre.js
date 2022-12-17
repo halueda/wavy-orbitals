@@ -1,5 +1,6 @@
 // borrowed from HTML5による物理シミュレーション環境の構築水素原子の波動関数ビューア
 // https://www.natural-science.or.jp/article/20120406225432.php
+import { ll , tr} from './util.js';
 
 function Factorial(n, n1) //
 {

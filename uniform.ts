@@ -5,6 +5,6 @@
  * @param min
  * @param max
  */
-export default function uniform (min: number, max: number) {
+export default function uniform(min: number, max: number) {
   return Math.random() * (max - min) + min
 }

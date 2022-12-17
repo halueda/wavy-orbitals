@@ -1,0 +1,51 @@
+<html> <!-- coding: utf-8-unix; 日本語あり -->
+<head>
+  <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
+  <!--script src="main.js" ></script-->
+</head>
+<Body>
+<H1>
+Wavy Orbitals TEST
+</H1>
+
+  <foam>
+    <input type="checkbox" id="noanimation"> Stop Animation</input>
+  </foam>
+  <div id="myDiv"><!-- ここにグラフを表示する --></div>
+  <div id="forDebug"><!-- forDebug --></div>
+  <script type="module">
+    import WavyOrbitals from "./main.js";
+    //import "./main.js"; 
+    
+    WavyOrbitals.debug('forDebug', 'noanimation');
+  </script>
+
+
+</Body>
+</Html>
+<html> <!-- coding: utf-8-unix; 日本語あり -->
+<head>
+  <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
+  <!--script src="main.js" ></script-->
+</head>
+<Body>
+<H1>
+Wavy Orbitals
+</H1>
+
+  <foam>
+    <input type="checkbox" id="noanimation"> Stop Animation</input>
+  </foam>
+  <div id="myDiv"><!-- ここにグラフを表示する --></div>
+  <div id="forDebug"><!-- forDebug --></div>
+  <script type="module">
+    import WavyOrbitals from "./main.js";
+    //import "./main.js"; 
+    WavyOrbitals.experiment('myDiv', 'noanimation');
+    
+    WavyOrbitals.debug('forDebug', 'noanimation');
+  </script>
+
+
+</Body>
+</Html>
