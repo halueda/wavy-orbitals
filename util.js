@@ -24,7 +24,7 @@ export function tr(result){
 }
 
 function replacer(k, v){
-        if (typeof k === "function") {
+        if (typeof v === "function") {
                 return v.toString();
         } else {
                 return v;
