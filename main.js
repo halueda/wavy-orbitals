@@ -99,7 +99,7 @@ function forDebug( div, noanime  ){
   let result = unchanged;
   
   const tmp = (new Hydrogen (2,1,0));
-  result =  tmp.sampling(1000);
+  result =  tmp.sampling(10);
   result.map( t => {if (t.x > 0 && t.y > 0) { t.visible = false; }; } );
   animateWaveFragments( div, noanime, result );
   

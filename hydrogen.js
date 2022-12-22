@@ -73,10 +73,10 @@ export default class Hydrogen extends WaveFunction {
   
   waveValue(point) {
     const {r, theta, phi} = polar_coordinate(point);
-    let L = Legendre(this.m, r);
+    let L = Legendre(this.m, this.l, r);
     const YY = Y(this.m, this.l, this.n, theta, phi);
     tr({point,r,theta,phi, L, YY});
-    L = 0.01;
+    //L = 0.01;
     return mathjs.multiply(L , YY ); 
     // Legendre(this.m, r),   Y(this.m, this.l, this.n, theta, phi));
   }
