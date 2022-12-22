@@ -6,8 +6,8 @@
  * @param s 標準偏差
  */
 function rnorm (m = 0, s = 1) {
-  const rnorm = Math.sqrt(-2 * Math.log(1 - Math.random())) * Math.cos(2 * Math.PI * Math.random())
-  return (rnorm + m) * s * s
+  const rnorm_v = Math.sqrt(-2 * Math.log(1 - Math.random())) * Math.cos(2 * Math.PI * Math.random())
+  return (rnorm_v * s + m)
 }
 
 // From https://github.com/todays-mitsui/mhatl.js/blob/master/lib/util/uniform.ts
