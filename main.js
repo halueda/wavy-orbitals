@@ -98,9 +98,9 @@ function forDebug( div, noanime  ){
   const unchanged = {v:"unchanged",};
   let result = unchanged;
   
-  const tmp = (new Hydrogen (2,1,0));
-  result =  tmp.sampling(10);
-  result.map( t => {if (t.x > 0 && t.y > 0) { t.visible = false; }; } );
+  const tmp = (new Hydrogen (2,1,-1));
+  result =  tmp.sampling(500);
+  //result.map( t => {if (t.x > 0 && t.y > 0) { t.visible = false; }; } );
   animateWaveFragments( div, noanime, result );
   
   
