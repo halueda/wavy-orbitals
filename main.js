@@ -85,14 +85,12 @@ function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
       
       // ここでplotlyをアップデートしたい
       const gd = document.getElementById(div);
-      const fullLayout = gd._fulllayout;
-      //const sceneIds = fullLayout._subplots['gl3d'];
-      //const sceneId = scheneId[0];
+      const fullLayout = gd._fullLayout;
       const scene = fullLayout.scene._scene;
       const layout = scene.graphDiv.layout;
-      console.log({fullayout, scene, layout});
       scene.saveLayout(layout);
-
+      //console.log({fullLayout, scene, layout});
+      
       Plotly.update(div,[trace1],lay1);
     }
     /* console.log(JSON.parse(JSON.stringify(lay1.scene.camera))) */
