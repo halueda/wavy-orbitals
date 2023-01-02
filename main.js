@@ -82,15 +82,17 @@ function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
       trace1.marker.color = cs;
       /* lay1.datarevision += 1 */
       /* console.log(JSON.parse(JSON.stringify({diff_time, trace1}))) */
-      /* ここでplotlyをアップデートしたい
+      
+      // ここでplotlyをアップデートしたい
       const gd = document.getElementById(div);
       const fullLayout = gd._fulllayout;
-      const sceneIds = fullLayout._subplots['gl3d'];
-      const sceneId = scheneId[0];
-      const scene = fullLayout._scene;
+      //const sceneIds = fullLayout._subplots['gl3d'];
+      //const sceneId = scheneId[0];
+      const scene = fullLayout.scene._scene;
       const layout = scene.graphDiv.layout;
+      console.log({fullayout, scene, layout});
       scene.saveLayout(layout);
-      */ 
+
       Plotly.update(div,[trace1],lay1);
     }
     /* console.log(JSON.parse(JSON.stringify(lay1.scene.camera))) */
@@ -98,7 +100,7 @@ function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
 
   Plotly.newPlot(div, [trace1], lay1, {staticPlot: false})
     .then( function(){Plotly.addFrames( div, [ {name: 'wave', data: trace1 }, ]  )} )
-    .then( function(){  const gd = document.getElementById(div);  tr({gd}); } )
+    //.then( function(){  const gd = document.getElementById(div);  console.log({gd}); } )
     .then( setInterval( update_color, 1000) )  /* 本番では 100にする。plotly.jsの検証のために1000にしておく */
   
 }
