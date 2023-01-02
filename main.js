@@ -99,7 +99,7 @@ function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
   Plotly.newPlot(div, [trace1], lay1, {staticPlot: false})
     .then( function(){Plotly.addFrames( div, [ {name: 'wave', data: trace1 }, ]  )} )
     //.then( function(){  const gd = document.getElementById(div);  console.log({gd}); } )
-    .then( setInterval( update_color, 1000) )  /* 本番では 100にする。plotly.jsの検証のために1000にしておく */
+    .then( setInterval( update_color, 300) )  /* 本番では 100にする。plotly.jsの検証のために1000にしておく */
   
 }
 
@@ -109,7 +109,7 @@ function forDebug( div, noanime  ){
   let result = unchanged;
   
   const tmp = (new Hydrogen (2,1,-1));
-  const f =  tmp.sampling(500);
+  const f =  tmp.sampling(1000);
   //result.map( t => {if (t.x > 0 && t.y > 0) { t.visible = false; }; } );
   animateWaveFragments( div, noanime, f );
   result = {fragments: f, orbitals: tmp};
