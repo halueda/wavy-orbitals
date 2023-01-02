@@ -82,6 +82,15 @@ function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
       trace1.marker.color = cs;
       /* lay1.datarevision += 1 */
       /* console.log(JSON.parse(JSON.stringify({diff_time, trace1}))) */
+      
+      // ここでplotlyをアップデートしたい
+      const gd = document.getElementById(div);
+      const fullLayout = gd._fullLayout;
+      const scene = fullLayout.scene._scene;
+      const layout = scene.graphDiv.layout;
+      scene.saveLayout(layout);
+      //console.log({fullLayout, scene, layout});
+      
       Plotly.update(div,[trace1],lay1);
     }
     /* console.log(JSON.parse(JSON.stringify(lay1.scene.camera))) */
@@ -89,6 +98,7 @@ function animateWaveFragments( div, noanime, sampled_wave_fragments ) {
 
   Plotly.newPlot(div, [trace1], lay1, {staticPlot: false})
     .then( function(){Plotly.addFrames( div, [ {name: 'wave', data: trace1 }, ]  )} )
+    //.then( function(){  const gd = document.getElementById(div);  console.log({gd}); } )
     .then( setInterval( update_color, 1000) )  /* 本番では 100にする。plotly.jsの検証のために1000にしておく */
   
 }
@@ -99,9 +109,10 @@ function forDebug( div, noanime  ){
   let result = unchanged;
   
   const tmp = (new Hydrogen (2,1,-1));
-  result =  tmp.sampling(500);
+  const f =  tmp.sampling(500);
   //result.map( t => {if (t.x > 0 && t.y > 0) { t.visible = false; }; } );
-  animateWaveFragments( div, noanime, result );
+  animateWaveFragments( div, noanime, f );
+  result = {fragments: f, orbitals: tmp};
   
   
   if (result !== unchanged) {

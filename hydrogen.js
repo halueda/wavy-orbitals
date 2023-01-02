@@ -7,7 +7,7 @@ function theta_fun(m, theta) {
   const x = Math.sqrt(2) * Math.PI;
   const y = mathjs.exp(mathjs.multiply(mathjs.complex(0, 1), m * theta));
   const z = mathjs.divide(y, x);
-  tr({m, theta, x, y, z})
+  //ll('theta_fun: m theta x y z', [m, theta, x, y, z])
   return z;
   //  return mathjs.chain(1).
   //    divide( mathjs.chain(2).sqrt().multiply(mathjs.PI).done()).
@@ -32,7 +32,8 @@ phi_def[2][-2] = (theta => mathjs.chain(15 / 16).sqrt().multiply(+(mathjs.sin(th
 
 function phi_fun(l, m, phi) {
   const r = (phi_def[l][m])(phi);
-  tr({ l, m, phi, phi_def: phi_def[l][m], r });
+  //ll("phi_fun: l m phi phi_def r", [l, m, phi, phi_def[l][m], r]);
+  //tr({ l, m, phi, phi_def: phi_def[l][m], r });
   //r = Yr(l, m, phi);
   return r;
 }
@@ -60,6 +61,14 @@ function polar_coordinate(point) {
 
 export default class Hydrogen extends WaveFunction {
   constructor(n, l, m) {
+     if (n <= l) {
+      const mes = `Hydrogen(n=${n}, l=${l},m=${m}): must be n > l `;
+      throw new RangeError(mes);
+    }
+    if (l < Math.abs(m)) {
+      const mes = `Hydrogen(n=${n}, l=${l},m=${m}): must be l >= abs(m) `;
+      throw new RangeError(mes);
+    }
     super();
     this.n = n;
     this.l = l;
@@ -80,7 +89,7 @@ export default class Hydrogen extends WaveFunction {
     const YY = Y(this.m, this.l, this.n, theta, phi);
     const R = 2.0 / Math.pow(n, 2) * Math.sqrt(Factorial(n - l - 1) / Factorial(n + l)) * Math.exp(-r / n) * Math.pow(2.0 * r / n, l) * Laguerre(2 * l + 1, n - l - 1, 2.0 * r / n);
 
-    tr({ point, r, theta, phi, R, YY });
+    //tr({ point, r, theta, phi, R, YY });
     return mathjs.multiply(R, YY);
     // Legendre(this.m, r),   Y(this.m, this.l, this.n, theta, phi));
   }
