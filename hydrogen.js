@@ -61,6 +61,14 @@ function polar_coordinate(point) {
 
 export default class Hydrogen extends WaveFunction {
   constructor(n, l, m) {
+     if (n <= l) {
+      const mes = `Hydrogen(n=${n}, l=${l},m=${m}): must be n > l `;
+      throw new RangeError(mes);
+    }
+    if (l < Math.abs(m)) {
+      const mes = `Hydrogen(n=${n}, l=${l},m=${m}): must be l >= abs(m) `;
+      throw new RangeError(mes);
+    }
     super();
     this.n = n;
     this.l = l;
