@@ -39,9 +39,9 @@ export default class MCMCSampler {
     p,
     x0=1, y0=1, z0=1,
     /** Burn-in 期間の長さ */
-    burn_in_period=80,
+    burn_in_period=50,
     /** 提案分布の標準偏差 */
-    sigma=4.0,
+    sigma=5.0,
   ){
     this.p = p; 
     this.current = {x: x0, y: y0, z: z0};
